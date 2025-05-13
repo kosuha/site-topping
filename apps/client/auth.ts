@@ -31,6 +31,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         },
         async authorize(credentials) {
             if(!credentials) throw new Error('No credentials provided');
+            console.log(credentials);
 
             const user = await db
             .select({
