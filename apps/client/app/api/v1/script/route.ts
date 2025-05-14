@@ -11,6 +11,8 @@ const supabase = createClient(
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
+  const selector = searchParams.get('selector');
+  const builder = searchParams.get('builder');
 
   if (!id) {
     return NextResponse.json({ error: 'id is required' }, { status: 400 });
@@ -73,7 +75,11 @@ export async function GET(request: Request) {
 
     const scriptContent = await fs.readFile(filePath, 'utf-8');
     const templateClassName = "change-class-name";
-    const replacedClassName = "span.plain_name";
+    
+    let replacedClassName = selector ? `${selector}` : "span.plain_name";
+    if (builder === 'imweb') {
+      replacedClassName = "span.plain_name";
+    }
     let replacedScriptContent = scriptContent.replace(templateClassName, replacedClassName);
 
     return new NextResponse(replacedScriptContent, {
