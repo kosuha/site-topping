@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { Codes } from './codes';
+import { Settings } from './settings';
 import { getTeamForUser, getUser } from '@/lib/db/queries';
 
 export default async function SettingsPage({params}: {params: Promise<{lng: string}>}) {
@@ -16,5 +16,5 @@ export default async function SettingsPage({params}: {params: Promise<{lng: stri
     throw new Error('Team not found');
   }
 
-  return <Codes teamData={teamData} lng={lng} />;
+  return <Settings teamData={teamData} lng={lng} />;
 }

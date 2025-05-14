@@ -17,7 +17,7 @@ type ActionState = {
 };
 
 export function Settings({ teamData, lng }: { teamData: TeamDataWithMembers, lng: string }) {
-  const { t } = useTranslation(lng, 'setting', {})
+  const { t } = useTranslation(lng, 'subscription', {})
   const [removeState, removeAction, isRemovePending] = useActionState<
     ActionState,
     FormData
