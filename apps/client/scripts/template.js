@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("@@@@ Start Script @@@@");
+  
   const menu = Array.from(document.querySelectorAll("change-class-name"));
   menu.forEach((e) => {
     let txt = e.textContent;
